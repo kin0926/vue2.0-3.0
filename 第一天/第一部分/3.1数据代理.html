@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root">
+        <h2>{{name}}</h2>
+        <h2>{{address}}</h2>
+        <h2>欢迎来到{{home}}玩</h2>
+        <button @click="aa1">点我提示</button>
+        <!-- 要传参就加小括号（） -->
+        <button @click="aa2(66,$event)">信息</button>
+    </div>
+
+    <script src="../../js/Vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el:'#root',
+            data:{    //只有data里的数据才会数据劫持，数据代理。methods里的不会
+                name:'李华',
+                address:'广东',
+                home:'我家'
+            },
+            methods:{
+                aa1(){
+                    alert('11')
+                },
+                aa2(number,e){
+                    console.log(number,e);
+                }
+            }
+        })
+    </script>
+</body>
+</html>

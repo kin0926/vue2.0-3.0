@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <script src="../js/Vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h1>hello，{{name}}</h1>
+        <h1>hello，{{address}}</h1>
+        <a :href="url">跳转到一个开始</a>
+        <input type="text" :value="name">
+        <input type="text" v-model="name"> <!-- 即v-model:value="name" -->>
+    </div>
+    <script>
+        //创建vue
+        var v = new Vue({
+            el:'#root',   //只能绑定一个，选择器名字相同时只挂载第一个,1对1
+            //el这里也可以不写,但是要在new vue外面写元素名.$mount('要挂载的选择器');
+            data:{ //数据供el挂载的容器使用
+                name:'小美',
+                address:'上海',
+                url:'https://aur.one/'
+            },
+            // data:function(){    //不能用箭头函数
+            //     return{
+            //         name:'我才是小美'
+            //     }
+            // }
+        })
+        // v.$mount('#root');  //mount 挂载
+    </script>
+</body>
+</html>

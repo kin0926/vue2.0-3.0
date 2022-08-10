@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .bder{
+            width: 400px;
+            height: 200px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="root">
+        <div class="bder" :style='styleObj'>{{name}}</div>
+    </div>
+
+    <script src="../../js/Vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el:'.root',
+            data:{
+                name:'坚持',
+                fsize:40,
+                //上面的style连到这里，注意样式要用驼峰命名法
+                styleObj:{
+                    fontSize : '80px'
+                }
+            },
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root">
+        <ul>
+            <h2>人员列表</h2>
+            <!-- :key,给所有数组一个单独的标识，即p里面的id -->
+            <li v-for="(p,index) in persons" :key="p.id">
+                {{p.name}}-{{p.age}}-{{index}}
+            </li>
+            <!-- 遍历指定次数，2次，用的少啊 -->            
+            <li v-for="(p,index) in 2">
+                {{p.name}}-{{p.age}}-{{index}}
+            </li>
+        </ul>
+        <div v-for="p in persons">
+            {{p.name}}-{{p.age}}
+        </div>
+    </div>
+
+    <script src="../../js/Vue.js"></script>
+    <script>
+        new Vue({
+            el:'#root',
+            data:{
+                persons:[
+                    {id:'1',name:'小李',age:'21'},
+                    {id:'2',name:'翠花',age:'25'},
+                    {id:'3',name:'罗高',age:'23'},
+                ]
+            }
+        })
+    </script>
+</body>
+</html>

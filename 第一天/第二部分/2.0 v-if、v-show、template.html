@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .bder{
+            width: 400px;
+            height: 200px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <!-- 学v-show 和 v-if -->
+    <div id="root">
+        <div>当前的n是{{n}}</div>
+        <button @click="n++">点我n+1</button>
+        <!-- 但24行成立跳过25行的判断，不出来时25行正常执行v-if -->
+        <!-- template是模板结构，渲染时会自动被去除，只能配合v-if不能配合v-show-->
+        <template>
+            <div class="bder" v-if="n == 3">当兰兰</div>
+            <div class="bder" v-else-if="n == 5">当兰兰</div>
+            <div class="bder" v-else>侯兰</div>
+        </template>
+        
+
+        <script src="../../js/Vue.js"></script>
+        <script>
+            new Vue({
+                el:'#root',
+                data:{
+                    n:0,
+                }
+            })
+        </script>
+    </div>
+</body>
+</html>

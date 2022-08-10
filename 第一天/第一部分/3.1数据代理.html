@@ -5,6 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .box1{
+            height: 50px;
+            background-color: antiquewhite;
+        }
+        .box2{
+            height: 20px;
+            background-color: aquamarine;
+        }
+    </style>
 </head>
 <body>
     <div id="root">
@@ -14,6 +24,17 @@
         <button @click="aa1">点我提示</button>
         <!-- 要传参就加小括号（） -->
         <button @click="aa2(66,$event)">信息</button>
+        <a href="https://www.bilibili.com" @click.prevent.once="aa3">点我一下吧</a>
+        <button @click.once="aa3">只能执行一次哦</button>
+        <br>
+        <div class="box1" @click.capture="aa4">
+            f1
+            <div class="box2" @click="aa5">
+                f2
+            </div>
+        </div>
+        <input type="text" placeholder="占位符" @keyup.space.enter="aa6"><!--空格、回车都触发-->
+        <input type="text" placeholder="占位符" @keyup.ctrl.enter="aa6"><!--ctrl加回车都触发-->
     </div>
 
     <script src="../../js/Vue.js"></script>
@@ -31,6 +52,18 @@
                 },
                 aa2(number,e){
                     console.log(number,e);
+                },
+                aa3(){
+                    alert('祝你天天开心！！')
+                },
+                aa4(){
+                    console.log('1');
+                },
+                aa5(){
+                    console.log('2');
+                },
+                aa6(e){
+                    console.log(e.target.value);  //e的对象的value内容
                 }
             }
         })

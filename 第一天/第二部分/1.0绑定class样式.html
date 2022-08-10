@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .basic{
+            background-color: aliceblue;
+            border: 1px solid pink;
+            width: 400px;
+            height: 200px;
+        }
+        .blue{
+            background-color: rgb(0, 195, 255);
+        }
+        .happy{
+            background-color: yellow;
+        }
+        .green{
+            background-color: rgb(0, 255, 98);
+        }
+        .black{
+            background-color: rgb(0, 0, 0);
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <div class="basic" :class="aa" @click="aa1"></div>
+    </div>
+
+
+    <script src="../../js/Vue.js"></script>
+    <script>
+        new Vue({
+            el:'#root',
+            data:{
+                aa:'blue',
+            },
+            methods: {
+                aa1(){
+                    const arr = ['happy','green','black'];
+                    //aa的值定为arr数组里索引值为（向下取整的[0~1）随机数*3的值）
+                    this.aa = arr[Math.floor(Math.random()*3)]
+                }
+            },
+        })
+    </script>
+</body>
+</html>

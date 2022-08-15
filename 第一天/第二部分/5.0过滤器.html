@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root">
+        <!-- 容器 -->
+        <h3>{{time}}</h3>
+        <!-- 计算属性实现 -->
+        <h3>{{time1}}</h3>
+        <!-- methods方法属性实现 -->
+        <h3>{{time2()}}</h3>
+        <!-- 过滤器实现 -->
+        <h3>{{time1 | timemater}}</h3>
+    </div>
+
+    <script src="../../js/Vue.js"></script>
+    <script src="../../js/day.js"></script>
+    <script>
+        new Vue({
+            el:'#root',
+            data:{
+                time1:'2022815025897'
+            },
+            computed: {
+                time(){
+                    return dayjs(this.time1).format('YYYY 年 MM 月 DD HH:mm:ss')
+                }
+            },
+            methods: {
+                time2(){
+                    return dayjs(this.time1).format('YYYY 年 MM 月 DD HH:mm:ss')
+                }
+            },
+            filters:{
+                timemater(value){
+                    return dayjs(value).format('YYYY 年 MM 月 DD HH:mm:ss')
+                }
+            }
+        })
+    </script>
+</body>
+</html>

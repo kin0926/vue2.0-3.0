@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- cookie，登录网站时输入密码账号到目标的服务器，登录成功的同时它会
+把你的信息传回浏览器cookie保存起来，下次再访问网站是会同时携带这些信息到服务器
+不用再重新输入 -->
+<body>
+    <div id="root">
+        <div>{{name}}</div>
+        <!-- 拿到text里的值替换整个div里的内容 -->
+        <!-- 像inner.text 和inner.html -->
+        <div v-text="name"></div>
+        <div v-html="name"></div>
+    </div>
+
+
+    <script src="../../js/Vue.js"></script>
+    <script>
+        new Vue({
+            el:'#root',
+            data:{
+                name:'<h3> 123 </h3>',
+            },
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- v-cloak没有值，当vue创建完毕后会自动删除，可以搭配css的[v-cloak]属性选择器做些操作 -->
+<!-- v-once在初次渲染后就变成静态内容了，此后数据的改变不会引起v-once所在区域的更新 -->
+<!-- v-pre跳过渲染，原本怎么样就怎么样。给没有指令语法，插值语法的节点加可以加快编译 -->
+<body>
+    <div id="root">
+        <!-- v-cloak -->
+        <h2 v-cloak>{{name}}</h2>
+
+        <!-- v-once,不等于once事件修饰符 -->
+        <h3 v-once>{{n}}</h3>
+        <h3>{{n}}</h3>
+        <button @click="n++">点我n+1</button>
+
+        <!-- v-pre -->
+        <h2 v-pre>不用渲染我</h2>
+        <h3 v-pre>{{n}}</h3>
+    </div>
+
+    <script src="../../js/Vue.js"></script>
+    <script>
+        new Vue({
+            el:'#root',
+            data:{
+                name:'123',
+                n:1
+            }
+        })
+    </script>
+</body>
+</html>

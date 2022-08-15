@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root">
+        <form action="" @submit.prevent="domo">
+            <label for="account1">账号：</label>
+            <input type="text" id="account1" v-model.trim="userinfo.account"><br><br>
+            <label for="paw">密码：</label>
+            <input type="password" id="paw" v-model.trim="userinfo.password"><br><br>
+            <label for="age">年龄：</label>
+            <input type="number" id="age" v-model.number="userinfo.age"><br><br>
+            性别：
+            男<input type="radio" value='man' name="sex1" v-model="userinfo.sex">
+            女<input type="radio" value='girl' name="sex1" v-model="userinfo.sex"><br><br>
+            爱好：
+            学习<input type="checkbox" value="study" v-model="userinfo.hubby">
+            看书<input type="checkbox" value="book" v-model="userinfo.hubby">
+            音乐<input type="checkbox" value="music" v-model="userinfo.hubby"><br><br>
+            所在地区：
+            <select name="" id="" v-model="userinfo.city">
+                <option value="userinfo.shenzhen">深圳</option>
+                <option value="userinfo.shanghai">上海</option>
+                <option value="userinfo.anhui">安徽</option>
+                <option value="userinfo.fujian">福建</option>
+            </select>
+            <br><br>
+            其它信息：<textarea v-model.lazy="userinfo.other"></textarea>
+            <br><br>
+            <input type="checkbox" v-model="userinfo.agree">阅读并接受<a href="javascript:;">用户协议</a>
+            <br><br><button>提交</button>
+        </form>
+    </div>
+
+    <script src="../../js/Vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el: '#root',
+            data: {
+                userinfo: {
+                    account: '',
+                    password: '',
+                    age:'',
+                    sex: 'girl',
+                    hubby: [],
+                    city: 'shenzhen',
+                    other: '',
+                    agree: ''
+                },
+                methods: {
+                    mode(){
+                        console.log(this.userinfo);
+                    }
+                },
+            }
+        })
+    </script>
+</body>
+
+</html>

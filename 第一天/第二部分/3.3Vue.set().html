@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root">
+        <h2>学校姓名{{name}}</h2>
+        <h2>学校地址{{address}}</h2>
+        <hr>
+        <button @click="age1">修改</button>
+        <h2>学生姓名{{student.name}} </h2>
+        <h2>学生年龄{{student.sage}} </h2>
+        <h2>学生假年龄{{student.age.rage}} </h2>
+    </div>
+
+    <script src="../../js/Vue.js"></script>
+    <script>
+        new Vue({
+            el: '#root',
+            data: {
+                name: '天眼',
+                address: '深圳',
+                student: {
+                    name: '梨花',
+                    age: {
+                        rage: 48,
+                    },
+                }
+            },
+            methods: {
+                age1(){
+                    //在student里创建一个sage，值是18
+                    Vue.set(this.student,'sage',18)
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

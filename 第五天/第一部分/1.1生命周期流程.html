@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root">
+        <h2 @click="n++">{{n}}</h2>
+        <button @click="bye">ヾ(￣▽￣)Bye~Bye~</button>
+    </div>
+
+    <script src="../../js/Vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el: '#root',
+            data: {
+                n:1,
+            },
+            methods: {
+                bye(){
+                    this.$destroy();
+                }
+            },
+        // 生命周期流程
+        // 初始化生命周期、事件
+        beforeCreate() {
+            console.log('beforeCreate');
+        },
+        // 初始化数据代理、数据监测，此时页面才有_data等事件
+        created() {
+            console.log('created');
+        },
+
+        // ----【初始化后开始解析模板。。。，生成虚拟DOM】----
+
+        //挂载之前。 Vue解析完了但还没来得及挂上去
+        beforeMount() {
+            console.log('beforeMount');
+        },
+        // ----【虚拟DOM转为真实DOM】----
+        //挂载完毕，页面中都是经过Vue编译后的DOM。至此初始化结束
+        mounted() {
+            console.log('mounted');
+        },
+        
+        // 更新流程开始了，当数据更改时调用
+        // 更新前（数据是新的，页面是旧的）
+        beforeUpdate() {
+            console.log('beforeUpdate');
+            console.log(this.n);
+        },
+        // 【将新虚拟DOM和旧虚拟DOM进行内容对比，然后更新页面，实现MVVM中的model->view】
+        // 更新完毕（数据和内容都是新的，保持同步）
+        updated() {
+            console.log('updated');
+            console.log(this.n);
+        },
+
+        // 销毁流程（当不需要vm是调用vm.$destroy()进行销毁[this.$destroy()]）
+        // 销毁之前，一般在这个阶段执行关闭定时器、解绑自定义事件等收尾工作（交代后事）
+        beforeDestroy() {
+            console.log('beforeDestroy');
+        },
+        // 销毁完毕，vm和自己的所有子组件都移除了。没法再带着他们去快乐的玩耍了。。
+        destroyed() {
+            console.log('destroyed');
+        },
+        })
+    </script>
+</body>
+</html>

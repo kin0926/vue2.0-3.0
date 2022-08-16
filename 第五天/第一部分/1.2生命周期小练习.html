@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root">
+        <h2 :style="{opacity}">透明度</h2>
+        <button @click="stop">时间啊，停止吧</button>
+    </div>
+
+    <script src="../../js/Vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el: '#root',
+            data: {
+                opacity:1,
+            },
+            methods: {
+                stop(){
+                    this.$destroy()
+                }
+            },
+            mounted() {
+                  this.timer = setInterval(()=>{
+                    this.opacity -= 0.01
+                    if(this.opacity <= 0){
+                        this.opacity = 1;
+                    }
+                    console.log('定时器运行中');
+                  },16)
+            },
+            beforeDestroy() {
+                clearInterval(this.timer);
+            },
+        })
+    </script>
+</body>
+</html>

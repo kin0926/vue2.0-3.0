@@ -9,8 +9,9 @@
 <body>
     <div id="root">
         n是<h2 v-text="n"></h2>
-        数字放大后<h2 v-big="n"></h2>
+        数字放大后<h2 v-big-number="n"></h2>
         <button @click="n++">n+1</button>
+        <!-- <button v-fclick>点我创建一个输入框</button> -->
     </div>
 
     <script src="../../js/Vue.js"></script>
@@ -23,9 +24,17 @@
             directives:{
                 // 1、指令和元素成功绑定时会被调用
                 // 2、指令所在的模板（data）重新解析时也会被调用
-                big(element,binding){
+                // 如果命名出现‘-’，则需要加引号，一个单词时可以不加
+                'big-number'(element,binding){
                     element.innerText = binding.value*10;
-                }
+                },
+                // big(element,binding){
+                //     element.innerText = binding.value*10;
+                // },
+                // fclick(){
+                //     var ipt = document.createEvent('input')
+                //     document.body.appendChild(ipt)
+                // }
             }
         })
     </script>

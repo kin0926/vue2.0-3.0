@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 
+    生命周期
+        1、也称为生命周期钩子、生命周期回调函数
+        2、是什么？Vue在关键时刻帮我们调用的一些特殊名称的函数
+        3、生命周期函数名字不可改
+        4、this指向是 vm 或 组件实例对象
+ -->
+<body>
+    <div id="root">
+        <!-- 里面一组一组的得写成对象，也就是用{}框起来 -->
+        <!-- {opacity:aa} ，当data里的xx也叫opacity时可以简写-->
+        <h2 :style="{opacity}">透明度：透明度 可以只写一个</h2>
+        <h2 :style="{opacity}">我叫小云，我为自己代言</h2>
+    </div>
+
+    <script src="../../js/Vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el: '#root',
+            data: {
+                opacity: 1
+            },
+            // 挂载 (mounted)
+            //什么时候调用？ vue初次完成解析把真实DOM元素放入页面后调用mounted
+            //第一次解析叫挂载，之后叫更新
+            mounted() {
+                setInterval(()=> {
+                    this.opacity -= 0.01;
+                    if (this.opacity <= 0) {
+                        this.opacity = 1;
+                    }
+                }, 30)
+            },
+        })
+
+        // 通过外部定时器实现文字透明度变化（不推荐）
+        // setInterval(function(){
+        //     vm.opacity -= 0.01;
+        //     if(vm.opacity <= 0){
+        //         vm.opacity = 1;
+        //     }
+        // },30)
+    </script>
+</body>
+
+</html>

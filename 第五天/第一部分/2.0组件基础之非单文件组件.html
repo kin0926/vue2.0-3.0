@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 组件三部曲
+        1、创建
+        2、注册
+        3、编写组件标签
+     -->
+
+<body>
+    <div id="root">
+        <!-- 3、编写组件标签 -->
+        <school></school>
+        <hr>
+        <student></student>
+        <name></name>
+        <button @click="ab">145</button>
+    </div>
+
+    <script src="../../js/Vue.js"></script>
+    <script>
+        // 创建学校组件。主键不需要el挂载，组件就是一块砖，哪里需要哪里搬
+        const school = Vue.extend({
+            template: `
+            <div>
+            <h2>学校名称：{{schoolName}}</h2>
+            <h2>学校地址：{{address}}</h2>
+            </div>
+        `,
+            data() {
+                return {
+                    schoolName: '白金之星',
+                    address: '深圳',
+                }
+            },
+        })
+        // 创建学生组件。组件的data必须使用函数式，不能使用对象式，防止数据污染
+        const student = Vue.extend({
+            template: `
+            <div>
+            <h2>学生名称：{{studentName}}</h2>
+            <h2>学生名称：{{age}}</h2>
+            </div>
+        `,
+            data() {
+                return {
+                    studentName: '白金',
+                    age: 21,
+                }
+            },
+        })
+        // 创建name组件，用于全局注册
+        const name = Vue.extend({
+            template:`<h2>{{name123}}</h2>`,
+            data() {
+                return {
+                    name123:'12345'
+                }
+            },
+        })
+
+        // 注册组件（全局注册）,component没有's'！！！！
+        Vue.component('name',name)
+        
+        // el挂载，data就不用了，上面有。。components（组件）
+        new Vue({
+            el: '#root',
+            methods: {
+                ab(){
+                    alert('1')
+                }
+            },
+            // 注册组件（局部注册）
+            components: {
+                // 前面的是组件名（调用用），后面的上面那个是你写的组件的名字，如果上面取名为a，这里就写a
+                // 同名可以只写一个，school: school =》school
+                // 多个单词连接可以用'xx-xxx'或者AnnAaaa所有单词首字母大写
+                school: school,
+                'my-student' : student,
+            }
+        })
+
+        
+    </script>
+</body>
+
+</html>

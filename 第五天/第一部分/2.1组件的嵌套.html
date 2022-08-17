@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 每次调用Vue.extend 返回的都是一个个全新的 VueComponent -->
+<!-- new Vue的实例对象[this指向]是‘vm（即Vue）’ 而组件的实例对象是‘vc（VueComponent）’ -->
+<!-- vm管理着一个个vc，即vm管理着一个个组件 -->
+<body>
+    <div id="root">
+        <school></school>
+    </div>
+
+    <script src="../../js/Vue.js"></script>
+    <script>
+        // 创建学生组件，在父组件内引用，和在父组件的html里调用。
+        // 组件的data必须使用函数式，不能使用对象式，防止数据污染
+        const student = Vue.extend({
+            template: `
+            <div>
+            <h2>学生名称：{{studentName}}</h2>
+            <h2>学生名称：{{age}}</h2>
+            </div>
+        `,
+            data() {
+                return {
+                    studentName: '白金',
+                    age: 21,
+                }
+            },
+        })
+
+        // 1创建组件
+        const school = Vue.extend({
+            template: `
+            <div>
+            <h2>学校名称：{{schoolName}}</h2>
+            <h2>学校地址：{{address}}</h2>
+            引用student
+            <student/>
+            </div>
+            `,
+            data() {
+                return {
+                    schoolName:'vtu',
+                    address:'深圳'
+                }
+            },
+            // 开始嵌套
+            components:{
+                student,
+            }
+        })
+
+        let vm = new Vue({
+            el: '#root',
+            components:{
+                school:school,
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>loaclStorage</title>
+</head>
+<!-- 设置本地存储： setItem           localStorage.setItem('key','value')
+     读取本地存储： getItem           localStorage.getItem('key')
+     删除本地存储： removeItem        localStorage.removeItem('key')
+     清空本地存储： clear             localStorage.clear()
+    -->
+<body>
+    <h2>你好</h2>
+    <button id="asd">点我增加本地存储</button>
+    <button onclick="readDate()">读取本地存储</button>
+    <button onclick="deleteData()">移除本地存储</button>
+    <button onclick="deleteAllData()">清空本地存储</button>
+</body>
+
+<script>
+    var asd = document.querySelector('#asd');
+    let p = {name:'张三',age:18}
+
+    // 添加本地存储
+    asd.addEventListener('click',function(){
+        // (key,value)
+        localStorage.setItem('玩具','10元')
+        localStorage.setItem('p','p')
+        //JSON.stringify(p)对象转字符串
+        // localStorage.setItem('persion',JSON.stringify(p))
+        
+    })
+
+    // 读取本地存储
+    function readDate(){
+        // ()里输入存储数据的key值
+        console.log(localStorage.getItem('玩具'));
+        console.log(localStorage.getItem('p'));
+        console.log(localStorage.getItem('persion'));
+
+        let per = localStorage.getItem('persion')
+        console.log(JSON.parse(per));      //  JSON.parse解析
+    }
+
+    // 移除本地存储
+    function deleteData(){
+        localStorage.removeItem('persion')
+    }
+
+    // 清空本地存储
+    function deleteAllData(){
+        localStorage.clear()
+    }
+</script>
+</html>

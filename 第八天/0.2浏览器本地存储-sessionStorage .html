@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sessionSorage关闭浏览器时存储内容都没了</title>
+</head>
+<!-- 设置本地存储： setItem           sessionSorage.setItem('key','value')
+     读取本地存储： getItem           sessionSorage.getItem('key')
+     删除本地存储： removeItem        sessionSorage.removeItem('key')
+     清空本地存储： clear             sessionSorage.clear()
+
+     彩蛋：Ctil+H 查找替换
+    -->
+<body>
+    <button onclick="saveDate()">添加本地存储</button>
+    <button onclick="readDate()">读取本地存储</button>
+    <button onclick="deleteDate()">删除本地存储</button>
+    <button onclick="clearAll()">清空本地存储</button>
+</body>
+
+<script>
+    function saveDate(){
+        sessionStorage.setItem('key内容1','value内容1')
+        sessionStorage.setItem('key内容2','value内容2')
+    }
+    function readDate(){
+        console.log(sessionStorage.getItem('key内容1')); 
+        console.log(sessionStorage.getItem('key内容2')); 
+    }
+    function deleteDate(){
+        sessionStorage.removeItem('key内容1')
+    }
+    function clearAll(){
+        sessionStorage.clear()
+    }
+</script>
+</html>

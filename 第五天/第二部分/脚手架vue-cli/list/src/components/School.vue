@@ -1,29 +1,34 @@
 <template lang="">
   <!-- 快捷键输入 <vueInit -->
-  <div class="demo">
-    <h2 class="clr">学校地址{{ address }}</h2>
+  <div class="school">
+    <h2>学校地址{{ address }}</h2>
     <h2>学校名称{{ name }}</h2>
+    <button @click="sendSchoolName">把学校名给app</button>
   </div>
 </template>
 
 <script>
 export default {
   name: "school",
+  props:['getSchoolName'],
   data() {
     return {
       address: "深圳",
       name: "设计院",
     };
   },
+  methods: {
+    sendSchoolName(){
+      this.getSchoolName(this.name)
+    }
+  },
 };
 </script>
 
-<!-- less的特点是样式可以嵌套着写 -->
-<style lang="less">
-.demo {
+<style>
+.school {
   background-color: green;
-  .clr{
-    color: rgb(255, 241, 47);
-  }
+  padding: 5px;
+  margin-bottom: 20px;
 }
 </style>

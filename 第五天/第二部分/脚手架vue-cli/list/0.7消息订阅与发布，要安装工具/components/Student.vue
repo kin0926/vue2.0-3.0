@@ -6,6 +6,8 @@
     </div>
 </template>
 <script>
+// 引用消息订阅
+import pubsub from 'pubsub-js';
 
 export default {
     name:'student',
@@ -17,8 +19,7 @@ export default {
     },
     methods: {
         sendStudentName(){
-            // 事件总线-提供数据
-            this.$bus.$emit('hello',this.name)
+            pubsub.publish('hello',666)
         }
     },
 }

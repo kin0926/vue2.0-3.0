@@ -7,6 +7,10 @@
 </template>
 
 <script>
+// 消息订阅与发布   先安装工具npm i pubsub-js
+// 引用消息订阅
+import pubsub from 'pubsub-js';
+
 export default {
   name: "school",
   props:['getSchoolName'],
@@ -17,16 +21,16 @@ export default {
     };
   },
   mounted(){
-    // 事件总线-接收数据
-    this.$bus.$on('hello',(data)=>{
-      console.log('我是学校，收到了',data);
+    // 订阅消息,(a,b)里a是数据名，b是数据
+    this.pubId = pubsub.subscribe('hello',(name,data)=>{
+      console.log('有人发布了hello消息，hello消息的回调执行了',name,data);
     })
   },
   beforeDestroy() {
-    //不用了就结束并关闭总线傀儡上的hello
-    this.$bus.$off('hello')
+    //不用了就结束并关闭订阅上的hello
+    pubsub.unsubscribe(this.pubId)
   },
-};
+}
 </script>
 
 <style>

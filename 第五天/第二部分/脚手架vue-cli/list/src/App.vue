@@ -2,15 +2,21 @@
   <div>
     <CategoryVue title="游戏">
       <img
+        slot="one"
         src="https://cdn.pixabay.com/photo/2022/07/21/13/40/mongolian-girl-7336271_960_720.jpg"
         alt=""
       />
+      <a slot="two" href="javascript:;">具名插槽，插槽2</a>
     </CategoryVue>
 
     <CategoryVue title="美食">
-      <ul>
+      <ul slot="one">
         <li v-for="(i, index) in foods" :key="index">{{ i }}</li>
       </ul>
+      <template slot="two">
+        <a href="javascript:;">两个都要用slot='two'，，</a>
+        <a href="javascript:;">用template包裹</a>
+      </template>
     </CategoryVue>
 
     <CategoryVue title="汽车"></CategoryVue>

@@ -41,7 +41,9 @@ const mutations = {
     }
 }
 const state = {
-    sum: 0 //当前总和
+    sum: 0, //当前总和
+    school: 'sdfz',
+    subject: '计算机',
 }
 
 // 创建并暴露store并使用上面3个

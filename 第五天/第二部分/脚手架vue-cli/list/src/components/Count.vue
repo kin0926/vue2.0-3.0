@@ -1,6 +1,8 @@
 <template lang="">
   <div>
-    <h1>当前求和为{{ $store.state.sum }}</h1>
+    <!-- 这里原本是要写$store.state.sum，但是在下面的computed里封装了，所以直接sum -->
+    <h1>当前求和为{{ sum }}</h1>
+    <h3>我在{{ school }},学习{{ subject }}</h3>
     <!-- 加number强制数字型转换 -->
     <!-- 如果不加.number，使用第二列的2和第三列的3的时候会变成字符串拼接 -->
     <select v-model.number="n">
@@ -16,6 +18,8 @@
 </template>
 
 <script>
+// 为了批量添加computed里的那些，先导入mapState【map映射 state状态】
+import { mapState } from "vuex";
 export default {
   name: "Count",
   data() {
@@ -23,6 +27,23 @@ export default {
       n: 1, //用户选择的每次增加的数值
     };
   },
+  computed: {
+    // 靠程序员自己写$store.state
+    // sum() {
+    //   return this.$store.state.sum;
+    // },
+    // school() {
+    //   return this.$store.state.school;
+    // },
+    // subject() {
+    //   return this.$store.state.subject;
+    // },
+  
+    // 用mapState生成$store.state
+    // ...xxx,意思是把xxx内容展开放到...所在位置
+    ...mapState({sum:'sum',school:'school',subject:'subject'}),
+  },
+
   methods: {
     add() {
       this.$store.dispatch("add", this.n);

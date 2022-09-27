@@ -39,9 +39,13 @@ export default {
     //   return this.$store.state.subject;
     // },
   
-    // 用mapState生成$store.state
+    // 用mapState生成$store.state，从state中读取数据
     // ...xxx,意思是把xxx内容展开放到...所在位置
-    ...mapState({sum:'sum',school:'school',subject:'subject'}),
+    // ...mapState({sum:'sum',school:'school',subject:'subject'}),
+    
+    // 如果两个名字一样，可以用数组形式，要加''，
+    // 如果要简写不能用{}显示，因为sum{}会自动解析为sum:sum，而不是sum:'sum'
+    ...mapState(['sum','school','subject']),
   },
 
   methods: {

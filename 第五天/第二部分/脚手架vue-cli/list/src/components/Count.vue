@@ -33,15 +33,17 @@ export default {
     };
   },
   computed: {
-    ...mapState(['sum','school','subject','persons']),
+    // 找'a'要后面的数据，不过这种形式需要在store的，模块化分类里面加上namespaced:true,
+    ...mapState('a',['sum','school','subject']),
+    ...mapState('b',['persons']),
 
     // $store.getters也是相同方法
   },
 
   methods: {
-    ...mapMutations({subtract:'SUBTRACT'}),     //对象写法
+    ...mapMutations('a',{subtract:'SUBTRACT'}),     //对象写法
 
-    ...mapActions(['add','multiply','addWait'])
+    ...mapActions('a',['add','multiply','addWait'])
   },
 };
 </script>

@@ -12,20 +12,21 @@ Vue.use(Vuex)
 // 准备store内3个东西（响应、操作、存储）
 const actions = {
     // 加
+    // add(a阉割版store,b内容) {
     add(context, value) {
         console.log('actions的add被调用了');
         context.commit('ADD', value)
     },
+    // 减，  如果里面没有什么业务逻辑，数据可以直接给mutations，只要在发送请求
+    //       的那边改成this.$store.commit就行
+    // subtract(context, value) {
+    //     console.log('actions的-被调用了');
+    //     context.commit('SUBTRACT', value)
+    // },
     // 乘
     multiply(a, b) {
         a.commit('MULTIPLY', b)
     },
-    addWait(aontext, value) {
-        // 定时器也可以写在store的actions里
-        setTimeout(() => {
-            context.commit('ADD', value)
-        }, 800);
-    }
 }
 const mutations = {
     ADD(state, value) {
@@ -37,9 +38,6 @@ const mutations = {
     },
     MULTIPLY(state, value) {
         state.sum *= value
-    },
-    ADD_PERSON(state, value) {
-        state.persons.unshift(value)
     }
 }
 const state = {

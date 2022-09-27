@@ -16,14 +16,15 @@ export default {
   name: "person",
   computed: {
     // persons(){
-    //     return this.$store.state.persons
+    //     return this.$store.state.b.persons
     // }
-    ...mapState(["persons"]),
+    ...mapState('b',["persons"]),
   },
   methods: {
     add() {
       const personObj = { id: nanoid(), name: this.name };
-      this.$store.commit('ADD_PERSON',personObj)
+    // 模块化之后这里的'ADD_PERSON'要写出'b/ADD_PERSON'才能找到
+      this.$store.commit('b/ADD_PERSON',personObj)
       this.name = "";
     },
   },

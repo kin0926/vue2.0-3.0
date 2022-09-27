@@ -13,7 +13,7 @@ Vue.use(Vuex)
 // 准备store内3个东西（响应、操作、存储）,getters可以不用，相当于methods
 // count组件相关
 const countOptions = {
-        namespaced: true,
+        namespaced: true, //开启命名空间
         actions: {
             // 加
             add(context, value) {

@@ -11,15 +11,16 @@
           <!-- 原始写法 -->
           <!-- <a class="list-group-item" href="./about.html">About</a>
           <a class="list-group-item active" href="./home.html">Home</a> -->
-          <!-- 路由写法 -->
-          <router-link class="list-group-item" to="/about">About</router-link>
-          <router-link class="list-group-item active" to="/home">Home</router-link>
+          <!-- 路由写法  active-class="标签被激活时的样式"  active高亮显示 -->
+          <router-link class="list-group-item" active-class="active" to="/about">About</router-link>
+          <router-link class="list-group-item" active-class="active" to="/home">Home</router-link>
         </div>
       </div>
       <div class="col-xs-6">
         <div class="panel">
           <div class="panel-body">
-            route决定
+            <!-- 指定组件的呈现位置 -->
+            <router-view></router-view>
           </div>
         </div>
       </div>

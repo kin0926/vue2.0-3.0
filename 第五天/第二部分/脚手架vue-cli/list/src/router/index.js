@@ -1,19 +1,38 @@
 // 专门用于创建整个项目的路由器
 import VueRouter from 'vue-router'
 // 引入组件
-import About from '../components/About'
-import Home from '../components/Home'
+import About from '../pages/About'
+import Home from '../pages/Home'
+import News from '../pages/News'
+import Message from '../pages/Message'
 
 // 创建并暴露一个路由器
 export default new VueRouter({
+    //第一层的路由叫{一级路由}，如果要在里面继续嵌套路由，则里面的
+    //称之为二级路由。。。，这些嵌套的要写到一级路由的里面
     // 下面是一个路由器，管理着里面的两个路由
-    routes: [{
+    routes: [
+        // 一级路由：
+        {
             path: '/about', //如果你的路径是这个
             component: About //那么我就给你展示这个组件
         },
         {
             path: '/home',
-            component: Home
-        }
+            component: Home,
+            // 二级路由：
+            children: [
+                // 二级路由的path里面不需要加/ ，会自动添加的
+                {
+                    path: 'news',
+                    component: News
+                },
+                {
+                    path: 'message',
+                    component: Message
+                }
+            ]
+        },
+
     ]
 })

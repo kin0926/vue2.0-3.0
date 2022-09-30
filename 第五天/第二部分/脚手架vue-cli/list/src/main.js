@@ -3,23 +3,19 @@
 import Vue from "vue";
 // 引入app组件
 import App from "./App.vue";
+// 引入VueRouter
+import VueRouter from 'vue-router'
+// 引入路由器
+import router from './router/index'
 
-// vuex在store里面引入了，所以这边就不用了
-// 引入store
-import store from './store/index'
-
-
+// 使用vue-router
+Vue.use(VueRouter)
 
 // 关闭vue的生产提示
 Vue.config.productionTip = false;
 
-
 new Vue({
     el: "#app",
     render: (h) => h(App),
-    //vuex的store使用
-    store,
-    beforeCreate() {
-        Vue.prototype.$bus = this
-    }
+    router: router
 });

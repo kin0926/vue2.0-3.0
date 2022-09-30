@@ -5,7 +5,6 @@ import About from '../pages/About'
 import Home from '../pages/Home'
 import News from '../pages/News'
 import Message from '../pages/Message'
-import Detail from '../pages/Detail'
 
 // 创建并暴露一个路由器
 export default new VueRouter({
@@ -26,16 +25,12 @@ export default new VueRouter({
                 // 二级路由的path里面不需要加/ ，会自动添加的
                 {
                     path: 'news',
-                    component: News,
-                    children: [{
-                        path: 'detail',
-                        component: Detail,
-                    }]
+                    component: News
                 },
                 {
                     path: 'message',
                     component: Message
-                },
+                }
             ]
         },
 

@@ -27,10 +27,8 @@ export default new VueRouter({
                 {
                     path: 'news',
                     component: News,
-                    // 三级路由
                     children: [{
-                        name: 'hahaha', //给路由命名，可以简化编码，多级路由时可以直接写名字
-                        path: 'detail/:id/:title',
+                        path: 'detail',
                         component: Detail,
                     }]
                 },

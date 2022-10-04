@@ -3,8 +3,20 @@
     <ul>
       <li v-for="p in newslist" :key="p.id">
         <!-- 通过?的形式携带参数 -->
-        <!-- 跳转路由并携带params参数，to的字符串写法 -->
-        <router-link :to="`/home/news/detail/${p.id}/${p.title}`">{{p.title}}</router-link>
+        <!-- to的字符串写法 -->
+        <!-- <router-link :to="`/home/news/detail?id=${p.id}&title=${p.title}`">{{p.title}}</router-link> -->
+        <!-- to的对象写法 -->
+        <router-link
+          :to="{
+            path: '/home/news/detail',
+            query: {
+              id: p.id,
+              title: p.title,
+            },
+          }"
+        >
+          {{ p.title }}
+        </router-link>
       </li>
     </ul>
     <hr />

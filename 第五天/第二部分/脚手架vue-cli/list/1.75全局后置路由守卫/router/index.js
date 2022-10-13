@@ -69,7 +69,7 @@ router.beforeEach((to, from, next) => {
 })
 
 // 全局后置路由守卫--初始化、切换路由之后被调用
-// 已经切换完了，所以不用next(放行)了
+// 已经切换完了，所以不用next放行了
 router.afterEach((to, from) => {
     console.log('全局后置路由守卫发现切换了');
     document.title = to.meta.title || 'Vue系统ww'

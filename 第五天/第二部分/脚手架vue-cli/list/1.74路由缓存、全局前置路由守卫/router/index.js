@@ -35,16 +35,12 @@ const router = new VueRouter({
                         name: 'xiangqing', //给路由命名，可以简化编码，多级路由时可以直接写名字
                         path: 'detail/:id/:title',
                         component: Detail,
-                    }],
-                    // 是否需要鉴权，默认(访问)不需要(权限)
-                    meta: { isAuth: true, title: '新闻' }
+                    }]
                 },
                 {
                     name: 'jiude',
                     path: 'message',
-                    component: Message,
-                    // 是否需要鉴权，默认(访问)不需要(权限)
-                    meta: { isAuth: true, title: '旧闻' }
+                    component: Message
                 },
             ]
         },
@@ -57,7 +53,7 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
     console.log('全局前置路由守卫发现切换了，准备放行');
     // 判断这里用name和path都可以，不过name方便一点
-    if (to.meta.isAuth) { //给需要的组件里添加meta元素，判断isAuth是否需要鉴权
+    if (to.name === 'xingde' || to.path === '/home/message') {
         if (localStorage.getItem('school') === 'iliveyou') {
             next()
         } else {
@@ -67,12 +63,4 @@ router.beforeEach((to, from, next) => {
         next()
     }
 })
-
-// 全局后置路由守卫--初始化、切换路由之后被调用
-// 已经切换完了，所以不用next(放行)了
-router.afterEach((to, from) => {
-    console.log('全局后置路由守卫发现切换了');
-    document.title = to.meta.title || 'Vue系统ww'
-})
-
 export default router
